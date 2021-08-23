@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # 00_Immigration_.py
 
 def solution(n, times):

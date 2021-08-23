@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# 00_Immigration_.py
 
 def solution(n, times):
     answer = 0
@@ -13,4 +12,4 @@ def solution(n, times):
             return answer
 
 if __name__ == "__main__":
-    print(solution(6, [7,10]))
+    print(solution(6, [7,10]))      #28

@@ -1,9 +1,10 @@
-# 01_Immigration_.py
+# 02_Immigration_.py
 
 def solution(n, times):
     answer = 0
-    smaller_value = 0
-    bigger_value = max(times) * n
+    smaller_value = 1
+    bigger_value = min(times) * n
+    
     while( smaller_value <= bigger_value ):
         med_value = (smaller_value+bigger_value)//2
         comp = 0

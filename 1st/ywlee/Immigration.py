@@ -10,16 +10,23 @@
 '''
 
 def solution(n, times):
-    answer = []  # 걸리는 시간이 담길 리스트
+    answer = [] 
 
-    # n번째 사람이 완료되는 모든 시간 탐색
-    for time in times :                     # n번째 사람이 각 심사관에게 할당되는 모든 경우를 찾기 위해
-        for i in range(n) :                 # 한 명씩 늘려가면서 리스트에 추가해서
-            answer.append( (i+1) * time )   # 걸리는 모든 시간을 계산 (한 번은 꼭 걸릴테니 i+1)
+    # 임의의 시간 // 각 심사관의 심사 시간 == 각 심사관별 할당 인원
+    # 심사관들의 심사 시간을 임의의 시간으로 나눈 몫을 다 더하면, n이 되어야 한다.
+    # 그런 임의의 시간들 중에 최소 시간을 탐색
+    
+    max_time = sorted(times)[len(times)-1] * n
 
-    # 모든 경우의 수 중에서, 조건을 만족하는 가장 최소의 시간을 찾아야함
+    for i in range(max_time) :
+        cnt = 0
+        for time in times :
+            cnt = cnt + ( (i+1) // time )
 
-    return sorted(answer)[n-1]      # 왜 오름차순 정렬 후 n-1??
+        if (cnt == n) :
+            answer.append(i+1)
+    
+    return sorted(answer)[0]
 
 times = [7, 10]
 
@@ -29,9 +36,9 @@ print(solution(6, times))
 '''
 테스트 결과
 
-테스트 1 〉	통과 (0.06ms, 10.2MB)
-테스트 2 〉	통과 (18.91ms, 15.1MB)
-테스트 3 〉	통과 (2388.52ms, 316MB)
+테스트 1 〉	통과 (0.96ms, 10.1MB)
+테스트 2 〉	통과 (6875.40ms, 10.1MB)
+테스트 3 〉	실패 (시간 초과)
 테스트 4 〉	실패 (시간 초과)
 테스트 5 〉	실패 (시간 초과)
 테스트 6 〉	실패 (시간 초과)

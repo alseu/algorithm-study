@@ -16,12 +16,12 @@ def solution(n, times):
     # 각 심사관별 할당 인원을 다 더하면, n이 되어야 한다.
     # 그런 임의의 시간들 중에 최소 시간을 탐색 -> 이진탐색
     
-    # ( 1 < time < 1000000000 )
-    min_time = 1            
-    max_time = max(times) * n
-
     # 이진 탐색을 위해 오름차순 정렬
-    times = sorted(times)   
+    times = sorted(times)
+
+    # ( 1 < time < 1000000000 )
+    min_time = times[0] * n // len(times)
+    max_time = times[-1] * n
 
     while min_time <= max_time :
         mid = ( min_time + max_time ) // 2      # 중간값
@@ -49,13 +49,13 @@ print(solution(6, times))
 '''
 테스트 결과 
 
-테스트 1 〉	통과 (0.01ms, 10.1MB)
-테스트 2 〉	통과 (0.19ms, 10.3MB)
-테스트 3 〉	통과 (3.93ms, 10.1MB)
-테스트 4 〉	통과 (389.05ms, 14.9MB)
-테스트 5 〉	통과 (513.06ms, 14.9MB)
-테스트 6 〉	통과 (355.72ms, 15MB)
-테스트 7 〉	통과 (612.77ms, 15MB)
-테스트 8 〉	통과 (633.82ms, 14.8MB)
-테스트 9 〉	통과 (0.03ms, 10.2MB)
+테스트 1 〉	통과 (0.01ms, 10.2MB)
+테스트 2 〉	통과 (0.11ms, 10.1MB)
+테스트 3 〉	통과 (7.27ms, 10.1MB)
+테스트 4 〉	통과 (373.59ms, 15.1MB)
+테스트 5 〉	통과 (534.89ms, 15MB)
+테스트 6 〉	통과 (352.68ms, 15.2MB)
+테스트 7 〉	통과 (688.41ms, 14.9MB)
+테스트 8 〉	통과 (901.85ms, 15MB)
+테스트 9 〉	통과 (0.03ms, 10.1MB)
 '''

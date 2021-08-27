@@ -13,15 +13,16 @@ def solution(n, times):
     answer = 0
 
     # 임의의 시간 // 각 심사관의 심사 시간 == 각 심사관별 할당 인원
-    # 임의의 시간을 심사관들의 심사 시간으로 나눈 몫을 다 더하면, n이 되어야 한다.
+    # 각 심사관별 할당 인원을 다 더하면, n이 되어야 한다.
     # 그런 임의의 시간들 중에 최소 시간을 탐색 -> 이진탐색
     
     # ( 1 < time < 1000000000 )
     min_time = 1            
     max_time = max(times) * n
 
-    times = sorted(times)   # 이진 탐색을 위해 정렬
-    
+    # 이진 탐색을 위해 오름차순 정렬
+    times = sorted(times)   
+
     while min_time <= max_time :
         mid = ( min_time + max_time ) // 2      # 중간값
         cnt = 0                                 # 심사완료 인원
@@ -30,15 +31,15 @@ def solution(n, times):
         for time in times :
             cnt = cnt + (mid // time)
 
-        # 만약 더한 값이 n보다 작으면 (찾는 값이 오른쪽에 있음)
+        # 만약 더한 값이 n보다 작으면 (총 인원이 더 많음))
         if cnt < n :
             min_time = mid + 1
-        # 만약 더한 값이 n보다 크면 (찾는 값이 왼쪽에 있음)
+        # 만약 더한 값이 n보다 크면 (총 인원이 더 적음)
         elif cnt > n :
             max_time = mid - 1
         # 만약 더한 값이 n과 같으면 탈출
         else :
-            answer = mid
+            answer = mid    # 왜 여기서 내보내면 안되지??
             break
 
     return answer

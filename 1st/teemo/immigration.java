@@ -19,7 +19,7 @@ class Solution {
         for(long time : times) { 
             cnt += mid/time;
         }
-        if(cnt >= n) {
+        if(cnt >= n) { 
             if (start >= mid)
                 return mid;
             else

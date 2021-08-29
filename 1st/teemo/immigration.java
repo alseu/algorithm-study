@@ -16,7 +16,7 @@ class Solution {
         long mid = (start+end)/2;
         long cnt = 0;    
         
-        for(long time : times) {
+        for(long time : times) { 
             cnt += mid/time;
         }
         if(cnt >= n) {
@@ -26,7 +26,7 @@ class Solution {
                 return search(n, times, start, mid);
         }else{
             if (mid+1 >= end)
-                return mid;
+                return mid; 
             else
                 return search(n, times, mid+1, end);
         }

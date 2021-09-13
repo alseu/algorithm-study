@@ -18,52 +18,19 @@
 '''
 
 equation = input()
+result   = 0
 
-num = list()    # 숫자
-op  = list()    # 연산자
+# '-' 를 기준으로 문자열을 나눠서 나누어진 부분은 다 더하고
+# 다 더한 값들을 빼준다.
 
-seperate_index = 0  # 
-index = 0
+sep_eqs = equation.split('-')
+count   = 0
+for minus_eq in sep_eqs :
+    if count == 0 :
+        result += sum(map(int, minus_eq.split('+')))
+        count  += 1
+        continue
 
-# 숫자와 연산자 분리
-for s in equation :
-    if s == '+' :
-        num.append(int(equation[seperate_index:index]))
-        op.append(equation[index:index+1])
-        seperate_index = index + 1
-    elif s == '-' :
-        num.append(int(equation[seperate_index:index]))
-        op.append(equation[index:index+1])
-        seperate_index = index + 1
-    index += 1
-
-num.append(int(equation[seperate_index:index])) # 마지막 숫자
-
-'''
-index 0   1   2   3   4
-num   1   2   3   4   5
-op    -   +   +   -   +
-'''
-result = 0
-last_index = 0
-# - 가 나오면 좌우로 묶는다
-for i in range(len(op)) :
-    if op[i] == '-' :
-        if last_index == 0 :     # 첫 번째 -는 전부 index까지 더한다.
-            result = sum(num[last_index:i+1])
-            last_index = i + 1
-            #print('index = ', last_index, ', i =', i)
-            #print('sum = ', sum(num[last_index:i+1]))
-            #print('result =', result)
-            
-        else :
-            result -= sum(num[last_index:i+1])
-            last_index = i + 1
-            #print('el sum = ', sum(num[last_index:i+1]))
-            #print('el result =', result)
-    #print(last_index)
-
-#print('last = ' , sum(num[last_index:]))
-result -= sum(num[last_index:])   # 마지막 '-'부터 마지막 숫자까지 빼기
+    result -= sum(map(int, minus_eq.split('+')))
 
 print(result)

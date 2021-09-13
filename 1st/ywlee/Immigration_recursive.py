@@ -13,22 +13,21 @@ def immigration( n, times, min_time, max_time ):
     mid = ( min_time + max_time ) // 2
     cnt = 0
     
-    if min_time > max_time :
-        return None
-
     for time in times :
         cnt = cnt + (mid // time)
 
     # 만약 더한 값이 n보다 크면 (총 인원이 더 적음)
-    if cnt == n :
-        return mid
-    elif cnt > n :
-        return immigration( n, times, min_time, mid - 1 )
+    if cnt >= n :
+        if min_time >= mid :
+            return mid
+        else :
+            return immigration( n, times, min_time, mid )
     # 만약 더한 값이 n보다 작으면 (총 인원이 더 많음))
-    elif cnt < n :
-        return immigration( n, times, mid + 1, max_time )
-    
-    return None
+    else :
+        if mid + 1 > max_time :
+            return mid
+        else :
+            return immigration( n, times, mid + 1, max_time )
     
 def solution(n, times):
     answer = 0
@@ -41,7 +40,7 @@ def solution(n, times):
     times = sorted(times)
 
     # ( 1 < time < 1000000000 )
-    min_time = times[ 0] * n // len(times)
+    min_time = times[ 0]
     max_time = times[-1] * n
     
     answer = immigration( n, times, min_time, max_time )

@@ -25,8 +25,8 @@ DIR     = 2
 def check_left (curr, visited, cord, n, m) :
     ''' 방문 가능하면 True, 바다거나 이미 방문했다면 False '''
     if curr[DIR] == NORTH :
-        print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW]][curr[COL] - 1]))
         if curr[ROW] > 0 and curr[ROW] < n and curr[COL] > 0 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW]][curr[COL] - 1]))
             if visited[curr[ROW]][curr[COL] - 1] != VISITED and cord[curr[ROW]][curr[COL] - 1] != SEA :    # 방문하지 않았고 바다가 아니라면
                 return True
             else :
@@ -34,8 +34,8 @@ def check_left (curr, visited, cord, n, m) :
         else :
             return False
     elif curr[DIR] == EAST :
-        print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] - 1][curr[COL]]))
         if curr[COL] > 0 and curr[COL] < m and curr[ROW] > 0 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] - 1][curr[COL]]))
             if visited[curr[ROW] - 1][curr[COL]] != VISITED and cord[curr[ROW] - 1][curr[COL]] != SEA :    # 방문하지 않았고 바다가 아니라면
                 return True
             else :
@@ -43,8 +43,8 @@ def check_left (curr, visited, cord, n, m) :
         else :
             return False
     elif curr[DIR] == SOUTH :
-        print('dir = {}, visited = {}, cord = {}'.format(curr[DIR], visited[curr[ROW]][curr[COL] + 1], cord[curr[ROW]][curr[COL] + 1]))
-        if curr[ROW] > 0 and curr[ROW] < n and curr[COL] < m :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[ROW] > 0 and curr[ROW] < n and curr[COL] < m - 1 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, visited = {}, cord = {}'.format(curr[DIR], visited[curr[ROW]][curr[COL] + 1], cord[curr[ROW]][curr[COL] + 1]))
             if visited[curr[ROW]][curr[COL] + 1] != VISITED and cord[curr[ROW]][curr[COL] + 1] != SEA :    # 방문하지 않았고 바다가 아니라면
                 return True
             else :
@@ -52,8 +52,8 @@ def check_left (curr, visited, cord, n, m) :
         else :
             return False
     elif curr[DIR] == WEST :
-        print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] + 1][curr[COL]]))
-        if curr[COL] > 0 and curr[COL] < m and curr[ROW] < n :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[COL] > 0 and curr[COL] < m and curr[ROW] < n - 1 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] + 1][curr[COL]]))
             if visited[curr[ROW] + 1][curr[COL]] != VISITED and cord[curr[ROW] + 1][curr[COL]] != SEA :    # 방문하지 않았고 바다가 아니라면
                 return True
             else :
@@ -79,7 +79,8 @@ def turn_left (curr) :
 def check_sea (curr, cord, n, m) :
     ''' 바다면 True, 바다가 아니면 False '''
     if curr[DIR] == NORTH :
-        if curr[ROW] > 0 and curr[ROW] < n and curr[COL] > 0 :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[ROW] > 0 and curr[ROW] < n - 1 and curr[COL] > 0 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW]][curr[COL] - 1]))
             if cord[curr[ROW]][curr[COL] - 1] != SEA :    # 바다가 아니라면
                 return False
             else :
@@ -87,7 +88,8 @@ def check_sea (curr, cord, n, m) :
         else :
             return True
     elif curr[DIR] == EAST :
-        if curr[COL] > 0 and curr[COL] < m and curr[ROW] > 1 :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[COL] > 0 and curr[COL] < m - 1 and curr[ROW] > 0 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] - 1][curr[COL]]))
             if cord[curr[ROW] - 1][curr[COL]] != SEA :
                 return False
             else :
@@ -95,7 +97,8 @@ def check_sea (curr, cord, n, m) :
         else :
             return True
     elif curr[DIR] == SOUTH :
-        if curr[ROW] > 0 and curr[ROW] < n and curr[COL] > m :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[ROW] > 0 and curr[ROW] < n - 1 and curr[COL] > m - 1 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW]][curr[COL]] + 1))
             if cord[curr[ROW]][curr[COL] + 1] != SEA :
                 return False
             else :
@@ -103,7 +106,8 @@ def check_sea (curr, cord, n, m) :
         else :
             return True
     elif curr[DIR] == WEST :
-        if curr[COL] > 0 and curr[COL] < m and curr[ROW] > n :   # 왼쪽이 외곽을 벗어나지 않는지 
+        if curr[COL] > 0 and curr[COL] < m - 1 and curr[ROW] > n - 1 :   # 왼쪽이 외곽을 벗어나지 않는지 
+            print('dir = {}, {}'.format(curr[DIR], cord[curr[ROW] + 1][curr[COL]]))
             if cord[curr[ROW] + 1][curr[COL]] != SEA :
                 return False
             else :
@@ -149,10 +153,10 @@ def solution(move) :
     print('cord = ', cord)
     curr    = [a, b, d]    # x, y, direction
     visited = [ [0 for col in range(m)] for row in range(n) ]  # 미방문 : 0 , 방문 : 1
-    visited[a][b] = VISITED
+    visited[a][b] = VISITED # 처음 좌표도 포함
 
     turn_count   = 0
-    move_count   = 0
+    move_count   = 1    # 처음 좌표도 포함
 
     while True :
         time.sleep(0.5)
@@ -162,9 +166,9 @@ def solution(move) :
             res = check_left(curr, visited, cord, n, m)
             print('check_left = ', res)
             if  res : # 왼쪽에 가보지 않은 칸이 존재
-                visited[curr[0]][curr[1]] = VISITED # 방문
                 curr   = turn_left(curr)    # 왼쪽으로 회전
                 curr   = go_forward(curr)   # 앞으로 전진
+                visited[curr[0]][curr[1]] = VISITED # 방문
                 move_count += 1
                 turn_count  = 0
                 print('MOVE!')
@@ -187,5 +191,6 @@ def solution(move) :
     return move_count
 
 if __name__ == "__main__" :
-    move = ['4 4', '1 1 0', '1 1 1 1', '1 0 0 1', '1 1 0 1', '1 1 1 1']
-    print(solution(move))
+    moves = [['4 4', '1 1 0', '1 1 1 1', '1 0 0 1', '1 1 0 1', '1 1 1 1'], ['3 3', '1 1 0', '1 1 1', '1 0 0', '1 1 0']]
+    for move in moves :
+        print(solution(move))

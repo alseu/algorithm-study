@@ -1,3 +1,4 @@
+package teemo;
 import java.util.Scanner;
 
 class change {

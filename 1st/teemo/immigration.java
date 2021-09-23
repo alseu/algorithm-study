@@ -28,7 +28,7 @@ class Solution {
             if (mid+1 >= end)
                 return mid; 
             else
-                return search(n, times, mid+1, end);
+                return search(n, times, mid+1, end); 
         }
 
     }

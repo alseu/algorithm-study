@@ -7,12 +7,34 @@ for _ in range(n):
     arr.append(int(input()))
 
 # 선택 정렬
+cpy_arr = arr
 for i in range(n) :
     min_idx = i
     for j in range(i+1, n) :
-        if arr[min_idx] > arr[j] :
+        if cpy_arr[min_idx] > cpy_arr[j] :
             min_idx = j
-            print(min_idx)
-    arr[min_idx], arr[i] = arr[i], arr[min_idx]
+    cpy_arr[min_idx], cpy_arr[i] = cpy_arr[i], cpy_arr[min_idx]
 
-print(arr)
+
+def printResult(arr, alg) :
+    print(alg)
+    for i in reversed(arr) :
+        print(f'{i} ', end='')
+    print('')
+    
+printResult(cpy_arr, '선택정렬')
+
+# 삽입 정렬
+cpy_arr = arr
+for i in range(1, len(cpy_arr)) :
+    for j in range(i, 0, -1) :
+        if cpy_arr[j] < cpy_arr[j-1] :
+            cpy_arr[j], cpy_arr[j-1] = cpy_arr[j-1], cpy_arr[j]
+        else :
+            break
+printResult(cpy_arr, '삽입정렬')
+
+# 기본 라이브러리 정렬
+cpy_arr = arr
+cpy_arr = sorted(arr)
+printResult(cpy_arr, '기본라이브러리')

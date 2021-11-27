@@ -4,7 +4,8 @@ import (
 	//"fmt"
 	//"strconv"
 	//"./bsearch"
-	"./부품찾기"
+	//"./부품찾기"
+	"./개똥벌레"
 )
 
 func main() {
@@ -17,5 +18,6 @@ func main() {
 		result = bsearch.BinarySearch2( array, target, 0, array[len(array) - 1])
 		fmt.Println("target index = " + strconv.Itoa(result))
 	*/
-	부품찾기.FindParts2()
+	//부품찾기.FindParts2()
+	개똥벌레.Bugs()
 }

@@ -9,7 +9,6 @@ n, m = map(int, input().split())
 start = int(input())
 
 graph = [[] for i in range(n+1)]
-visited = [False] * (n+1)
 distance = [INF] * (n+1)  # 최단거리테이블을 가장 큰 값으로 초기화
 
 # 간선 정보 입력

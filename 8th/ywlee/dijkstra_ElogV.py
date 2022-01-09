@@ -1,5 +1,6 @@
-import heapq
-INF = int(1e9)
+import heapq, sys
+INF = float('inf')
+input = sys.stdin.readline
 
 # 노드의 개수(n), 간선의 개수(m)
 n, m = map(int, input().split())

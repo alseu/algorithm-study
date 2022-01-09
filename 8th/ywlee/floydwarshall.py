@@ -1,4 +1,6 @@
-INF = int(1e9)
+import sys 
+INF = float('inf')
+input = sys.stdin.readline
 
 n = int(input())
 m = int(input())
